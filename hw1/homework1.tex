@@ -1,0 +1,181 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{amsmath,amssymb,CJK}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{listings}
+\usepackage{enumerate}
+
+\openup 7pt\pagestyle{plain} \topmargin -40pt \textwidth
+14.5cm\textheight 21.5cm
+\parskip .09 truein
+\baselineskip 4pt\lineskip 4pt \setcounter{page}{1}
+\def\a{\alpha}\def\b{\beta}\def\d{\delta}\def\D{\Delta}\def\fs{\footnotesize}
+\def\g{\gamma}
+\def\G{\Gamma}\def\l{\lambda}\def\L{\Lambda}\def\o{\omiga}\def\p{\psi}
+\def\se{\subseteq}\def\seq{\subseteq}\def\Si{\Sigma}\def\si{\sigma}\def\vp{\varphi}\def\es{\varepsilon}
+\def\sc{\scriptstyle}\def\ssc{\scriptscriptstyle}\def\dis{\displaystyle}
+\def\cl{\centerline}\def\ll{\leftline}\def\rl{\rightline}\def\nl{\newline}
+\def\ol{\overline}\def\ul{\underline}\def\wt{\widetilde}\def\wh{\widehat}
+\def\rar{\rightarrow}\def\Rar{\Rightarrow}\def\lar{\leftarrow}
+\def\Lar{\Leftarrow}\def\Rla{\rightleftarrow}\def\bs{\backslash}
+\def\ra{\rangle}\def\la{\langle}\def\hs{\hspace*}\def\rb{\raisebox}
+\def\ni{\noindent}\def\hi{\hangindent}\def\ha{\hangafter}
+\def\vs{\vspace*}
+\def\hom#1{\mbox{\rm Hom($#1,#1$)}}
+\def\thebeg{\vskip8pt\par\ni}
+\def\theend{\vskip5pt\par}
+\def\chabeg{\pagebreak\par}
+\def\chaend{\vskip20pt\par}
+\def\secbeg{\vskip15pt\par}
+\def\secend{\vskip10pt\par}
+\def\exebeg{\vskip10pt}
+\def\exeend{\vskip6pt}
+\def\undot#1{\mbox{$\mbox{#1}\hs{-1.5ex}_{_{\dis\centerdot}}\,\,$}}
+\def\qed{\hfill\mbox{$\Box$}}
+\def\C{\mathbb{C}}
+\def\Q{\mathbb{Q}}
+\def\ii{\mbox{\,{\bf i}\,}}
+\def\jj{\mbox{\,{\bf j}\,}}
+\def\AA{{\cal A}}
+\def\BB{{\cal B}}
+\def\DD{{\cal D}}
+\def\EE{{\mbox{\bf 1}}}
+\def\OO{{\mbox{\bf 0}}}
+\def\kk{{\mbox{\bf k}}}
+\def\R{\mathbb{R}}
+\def\F{\mathbb{F}{\ssc\,}}
+%\def\similar{\rb{-4pt}{\mbox{\,\~\,}}}
+\def\similar{\backsim}
+\def\Llra{\Longleftrightarrow}
+\def\Lra{\Longrightarrow}
+\def\Lla{\Longleftarrow}
+\def\mat#1#2{\mbox{$\left(\begin{array}{#1}#2\end{array}\right)$}}
+\def\det#1#2{\mbox{$\left|\begin{array}{#1}#2\end{array}\right|$}}
+\def\eset{\emptyset}
+\parindent=5ex
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newtheorem{Example}{\text{例}}
+\begin{CJK*}{UTF8}{gbsn}
+
+\date{}
+\title{Homework 1}
+\author{Qinglin Lee(5110309074)}
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+\begin{enumerate}[(1)]
+\item
+	Toss the coin twice, then we can generate a pair $(x,y)$, where $x,y \in$\{HEAD,TAIL\}\\
+	If $x\neq y$, use $x$ as the result.\\
+	If $x=y$, toss the coin twice again, until $x\neq y$.\\
+	$\because \mathtt{Pr}(x\neq y)=2p(1-p)$\\
+	$\therefore$ expected number of pairs is $\dfrac{1}{2p(1-p)}$\\
+	$\therefore$ expected number of flips is $\dfrac{1}{p(1-p)}$
+	\qed
+\item
+	Present the sequence as pairs $(x_1,y_1), (x_2,y_2), \cdots. (x_n,y_n)$\\
+	$\forall x_i\neq y_i$, let the result be $x_i$\\
+	And then, generate two sequence from the original sequence:
+	\begin{enumerate}
+	\item
+	Remove all the pairs with different elements.\\
+	For all remaining pairs $(x_i,y_i)$, let $x_i'=x_i$\\ 
+	\item
+	$\forall(x_i,y_i)$, let
+	$	x_i'=
+		\left\{
+		\begin{array}{rl}
+			HEAD~~~~(x_i=y_i)\\
+			TAIL~~~~(x_i\neq y_i)\\
+		\end{array}
+		\right.
+	$\\
+	And we can do the same thing on the two new generated sequence.
+	\qed
+	\end{enumerate}
+\end{enumerate}
+
+\section*{Problem 2}
+\begin{enumerate}[(1)]
+\item
+	Let $N$ be the smallest power of $2$ greater or equal than $n$\\
+	Generate random bits for $\log_2N$ times, and these random bits makes up a number $m$.\\
+	If $m<n$, let $m$ be the sample, else regenerate $m$ until $m<n$.\\
+	Let $X$ be the time of generating $m$.\\
+	Thus, $\mathrm{Pr}(m<n)=\dfrac{n}{N}$\\
+	$E[X]=\dfrac{N}{n}$\\
+	The expected time to generate bits is $\dfrac{N\log_2N}{n}$
+	\qed
+\item
+	If $n$ is a power of $2$, in any case, we need to generate $\lceil\log_2n\rceil$ bits.\\
+	If $n$ is not a power of $2$, in the worst case, we always need to generate random bits.
+	\qed
+\item
+	Let $N$ be the smallest power of $p$ greater or equal than $n$\\
+	Generate random numbers for $\log_p N$ times, and these random numbers makes up a number $m$ under the base of $p$.\\
+	If $m<n$, let $m$ be the sample, else regenerate $m$ until $m<n$.\\
+
+	If $n$ is a power of $p$, in any case, we need to generate $\lceil\log_pn\rceil$ bits.\\
+	If $n$ is not a power of $p$, in the worst case, we always need to generate random bits.
+	\qed
+\end{enumerate}
+
+\section*{Problem 3}
+\begin{enumerate}[(1)]
+\item
+	$\Pr(R\cap S=\emptyset)=(1-p)^n$\\
+	$\Pr(R\cap S\neq\emptyset)=1-(1-p)^n$\\
+	$\Pr(R\cap S=\emptyset\wedge R\cap S\neq\emptyset)=(1-\frac{1}{n})^n[1-(1-\frac{1}{n})^n]$\\
+	$\lim_{n\to+\infty}(1-\frac{1}{n})^n[1-(1-\frac{1}{n})^n]=(1-\frac{1}{e})\frac{1}{e}$\\
+	
+	Arbitrarily choose $\varepsilon_0\in\R$\qquad s.t. $\varepsilon_0 < (1-\frac{1}{e})\frac{1}{e}$\\
+	$\exists N, \forall n>N$\\ 
+	$|(1-\frac{1}{n})^n[1-(1-\frac{1}{n})^n]-(1-\frac{1}{e})\frac{1}{e}|<\varepsilon_0\Rightarrow (1-\frac{1}{n})^n[1-(1-\frac{1}{n})^n]>(1-\frac{1}{e})\frac{1}{e}-\varepsilon_0>0$\\
+	Let $M=\min\{\Pr|_{n=1},\Pr|_{n=2},\cdots,\Pr|_{n=N-1},(1-\frac{1}{e})\frac{1}{e}-\varepsilon_0\}$\\
+	
+	$\forall n, \Pr\geq M$
+	\qed
+
+\item
+	Let $X_i$ indicate whether the i-th element of $S$ is choosen.\\
+	Let $Y_i$ indicate whether the i-th element of $T$ is choosen.\\
+	Let $X$ be the number of choosen elements of $S$, and $Y$ be the choosen elements of $T$.\\
+	Thus, $X=\sum_i X_i$~~,~~$Y=\sum_i Y_i$\\
+	\begin{align*}
+	&\Pr(R\cap S=\emptyset\wedge R\cap S\neq\emptyset)\\
+	=&\Pr(X=0\wedge Y>0)\\
+	=&\Pr(Y>0)-\Pr(X>0\wedge Y>0)	\\
+	=&\Pr(Y>0)-\Pr(XY\geq 1)
+	\end{align*}		
+	
+	By Markov's inequality, $\Pr(XY\geq 1)\leq \dfrac{E[XY]}{1}=E[XY]$\\
+	For an arbitrary positive number $\l$\\
+	\begin{align*}
+	E[Y]&=\sum_{0<x<\l}x\Pr(Y=x)+\sum_{x\geq\l}x\Pr(Y=x)\\
+	&\leq \l\Pr(Y>0)+\sum_{x\geq\l}\frac{x^2}{\l}\Pr(Y=x)\\
+	&\leq \l\Pr(Y>0)+\frac{1}{\l}E[X^2]
+	\end{align*}
+	$\therefore \Pr(Y>0)\geq\dfrac{1}{\l}E[Y]-\dfrac{1}{\l^2}E[Y^2]$\\
+	$\therefore \Pr(Y>0)-\Pr(XY\geq 1)\geq\dfrac{1}{\l}E[Y]-\dfrac{1}{\l^2}E[Y^2]-E[XY]$\\
+	Let $\a=E[Y]$\\
+	$E[Y^2]=E[\sum_i Y_iY_i+\sum_{i\neq j} Y_iY_j]=E[Y]+\sum_{i\neq j}E[Y_iY_j]$\\
+	By pairwise independent, $E[Y^2]=\a+\dfrac{n-1}{n}\a, E[XY]=E[X]E[Y]=\a^2$\\
+	$\therefore \Pr(R\cap S=\emptyset\wedge R\cap S\neq\emptyset)\geq\dfrac{1}{\l}\a-\dfrac{1}{\l^2}\left(\a+\dfrac{n-1}{n}\a^2\right)-\a^2$
+	\qed
+\end{enumerate}
+\section*{Problem 4}
+	If currently $k$ balls have been choosen from the bin. \\
+	Generate a random number $r$ less than $n$. \\
+	If $r<k$ randomly pick one of the k balls, else pick a ball from the bin.\\
+	Let $b$ be one of the $k$ balls.\\
+	$\Pr(\text{pick} b)=\dfrac{k}{n}*\dfrac{1}{k}=\dfrac{1}{n}$\\
+	Let $b'$ be a ball in the bin.\\
+	Since all balls in the bin are randomly choosen from all balls.\\
+	$\Pr(\text{pick} b')=\dfrac{n-k}{n}*\dfrac{1}{n-k}=\dfrac{1}{n}$
+	\qed
+\end{CJK*}
+\end{document}
