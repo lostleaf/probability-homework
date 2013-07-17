@@ -87,18 +87,41 @@ $E[X_n]=\displaystyle\sum_{i=1}^{n} \dfrac{1}{2i-1}$
 \section*{Problem 2}
 
 \section*{Problem 3}
-Let $X_i$ be \texttt{Number of Heads} - \texttt{Number of Tails}\\
-$$E[|X_i|]=\sum_{x>0}x\Pr(X_i=x)-\sum_{x<0}x\Pr(X_i=x)=2\sum_{x>0}x\Pr(X_i=x)$$\\
+Let $H_i$ be \texttt{Number of Heads} - \texttt{Number of Tails}\\
+$$E[|H_i|]=\sum_{x>0}x\Pr(H_i=x)-\sum_{x<0}x\Pr(H_i=x)=2\sum_{x>0}x\Pr(H_i=x)$$\\
 Let $i=2n$\\
-$$E[|X_i|]=4\sum_{y=0}^n y\dfrac{\binom{2n}{n+y}}{2^{2n}}=2^{2-2n}\sum_{y=0}^n y\binom{2n}{n+y}$$\\
+$$E[|H_i|]=4\sum_{y=0}^n y\dfrac{\binom{2n}{n+y}}{2^{2n}}=2^{2-2n}\sum_{y=0}^n y\binom{2n}{n+y}$$\\
 Let $S_1=\sum_{y=0}^n y\binom{2n}{n+y}=0\cdot\binom{2n}{n}+\cdots+n\cdot\binom{2n}{2n}$\\
 Let $S_2=\sum_{y=0}^{n} y\binom{2n}{y}=n\cdot\binom{2n}{n}+\cdots+0\cdot\binom{2n}{0}=n\cdot\binom{2n}{n}+\cdots+0\cdot\binom{2n}{2n}$\\
 $$S_1+S_2=n\sum_{y=n}^{2n}\binom{2n}{y}=\frac{n}{2}\left(2^{2n}+\binom{2n}{n}\right)$$
 $$S_2=\sum_{y=0}^{n} y\binom{2n}{y}=\sum_{y=0}^n 2n\binom{2n-1}{y-1}=2n\sum_{y=0}^{n-1} \binom{2n-1}{y}=n\cdot2^{2n-1}$$
 $$S_1=(S_1+S_2)-S_2=\frac{n}{2}\binom{2n}{n}$$
-$$E[|X_i|]=2^{2-2n}S_1=2^{2-2n}\frac{(2n)!n}{n!n!}$$
+$$E[|H_i|]=2^{2-2n}S_1=2^{2-2n}\frac{(2n)!n}{n!n!}$$
 By Stirling's approximation
-$$E[|X_i|]\approx2^{2-2n}\frac{\sqrt{4\pi n}\left(\frac{2n}{e}\right)^{2n}n}{2\pi n\left(\frac{n}{e}\right)^{2n}}=4\sqrt{\frac{n}{\pi}}=\Theta(\sqrt{\pi})$$
+$$E[|H_i|]\approx2^{2-2n}\frac{\sqrt{4\pi n}\left(\frac{2n}{e}\right)^{2n}n}{2\pi n\left(\frac{n}{e}\right)^{2n}}=4\sqrt{\frac{n}{\pi}}=\Theta(\sqrt{\pi})$$\\
+\begin{align*}
+&\Pr(H\geq k)\\
+=&\Pr(H\geq k|H_n\geq k)\cdot\Pr(H_n\geq k)+\Pr(H\geq k|H_n<k)\cdot\Pr(H_n<k)\\
+=&\Pr(H_n\geq k)+\Pr(H\geq k|H_n<k)\cdot\Pr(H_n<k)\\
+\end{align*}
+Since $H_n$ is either greater or less than $H_{n-1}$ by $1$, by reflection principle\\
+$$\Pr(H\geq k|H_n<k)\cdot\Pr(H_n<k)=\Pr(H_n\geq k+1)$$
+Thus
+$$\Pr(H\geq k)=\Pr(H_n\geq k)+\Pr(H_n\geq k+1)$$\\
+
+\begin{align*}
+&\Pr(H=k)\\
+=&\Pr(H\geq k)-\Pr(H\geq k+1)\\
+=&\Pr(H_n\geq k)+\Pr(H_n\geq k+1)-\Pr(H_n\geq k+1)-\Pr(H_n\geq k+2)\\
+=&\Pr(H_n=k)+\Pr(H_n=k+1)
+\end{align*}
+
+\begin{align*}
+E[H_i] =& \sum_{k \geq 0} k(\Pr[H_n = k] + \Pr[H_n = k+1]) \\
+=& \sum_{k \geq 1} (2k-1) \Pr[H_n = k] \\ 
+=& \Theta(E[H_n])\\
+=& \Theta(\sqrt{n})
+\end{align*}
 
 \section*{Problem 4}
 \begin{enumerate}

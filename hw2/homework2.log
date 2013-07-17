@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2013.5.11)  17 JUL 2013 19:17
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2013.5.11)  17 JUL 2013 21:26
 entering extended mode
 **homework2.tex
 (E:\课程\6.大二小学期\2.概率论\homework\hw2\homework2.tex
@@ -313,46 +313,61 @@ Underfull \hbox (badness 10000) in paragraph at lines 93--96
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--107
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
 
-Overfull \hbox (67.13225pt too wide) detected at line 107
+Underfull \hbox (badness 10000) in paragraph at lines 106--108
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
+
+ []
+
+
+Overfull \hbox (67.13225pt too wide) detected at line 130
 []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 [] \
 OMS/cmsy/m/n/12  \OML/cmm/m/it/12 t[]\OT1/cmr/m/n/12 ) = [](\OML/cmm/m/it/12 
 Z \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ) = [] [] \OMS/cmsy/m/n/
 12  [] []
  []
 
-[2]
-Overfull \hbox (45.2576pt too wide) detected at line 115
+
+Overfull \hbox (45.2576pt too wide) detected at line 138
 []\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 X \OMS/cmsy/m/n/12   \OML
 /cmm/m/it/12 []\OMS/cmsy/m/n/12 j  \OML/cmm/m/it/12 t[]\OT1/cmr/m/n/12 ) = [
 ] [] = [] []
  []
 
-[3] (E:\课程\6.大二小学期\2.概率论\homework\hw2\homework2.aux) ) 
+[3] [4] (E:\课程\6.大二小学期\2.概率论\homework\hw2\homework2.aux) ) 
 Here is how much of TeX's memory you used:
  4513 strings out of 495354
  55006 string characters out of 3183859
- 123791 words of memory out of 3000000
+ 124791 words of memory out of 3000000
  7645 multiletter control sequences out of 15000+200000
  11958 words of font info for 47 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  27i,8n,32p,243b,805s stack positions out of 5000i,500n,10000p,200000b,50000s
-<d:/C
-TEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/CTEX/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmex10.pfb><d:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmmi12.pfb><d:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/CTEX/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/CTEX/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmr17.pfb><d:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb
-><d:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/CTEX/MiKTeX/font
-s/type1/public/amsfonts/cm/cmsy8.pfb><d:/CTEX/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmtt12.pfb>
-Output written on homework2.pdf (3 pages, 106856 bytes).
+<
+d:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/CTEX/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmex10.pfb><d:/CTEX/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmmi12.pfb><d:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/CTE
+X/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/CTEX/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmr17.pfb><d:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8
+.pfb><d:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/CTEX/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/CTEX/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmtt12.pfb>
+Output written on homework2.pdf (4 pages, 110052 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
+ 55 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
