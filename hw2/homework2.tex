@@ -86,5 +86,35 @@ $E[X_n]=\displaystyle\sum_{i=1}^{n} \dfrac{1}{2i-1}$
 
 \section*{Problem 2}
 
+\section*{Problem 3}
+Let $X_i$ be \texttt{Number of Heads} - \texttt{Number of Tails}\\
+$$E[|X_i|]=\sum_{x>0}x\Pr(X_i=x)-\sum_{x<0}x\Pr(X_i=x)=2\sum_{x>0}x\Pr(X_i=x)$$\\
+Let $i=2n$\\
+$$E[|X_i|]=4\sum_{y=0}^n y\dfrac{\binom{2n}{n+y}}{2^{2n}}=2^{2-2n}\sum_{y=0}^n y\binom{2n}{n+y}$$\\
+Let $S_1=\sum_{y=0}^n y\binom{2n}{n+y}=0\cdot\binom{2n}{n}+\cdots+n\cdot\binom{2n}{2n}$\\
+Let $S_2=\sum_{y=0}^{n} y\binom{2n}{y}=n\cdot\binom{2n}{n}+\cdots+0\cdot\binom{2n}{0}=n\cdot\binom{2n}{n}+\cdots+0\cdot\binom{2n}{2n}$\\
+$$S_1+S_2=n\sum_{y=n}^{2n}\binom{2n}{y}=\frac{n}{2}\left(2^{2n}+\binom{2n}{n}\right)$$
+$$S_2=\sum_{y=0}^{n} y\binom{2n}{y}=\sum_{y=0}^n 2n\binom{2n-1}{y-1}=2n\sum_{y=0}^{n-1} \binom{2n-1}{y}=n\cdot2^{2n-1}$$
+$$S_1=(S_1+S_2)-S_2=\frac{n}{2}\binom{2n}{n}$$
+$$E[|X_i|]=2^{2-2n}S_1=2^{2-2n}\frac{(2n)!n}{n!n!}$$
+By Stirling's approximation
+$$E[|X_i|]\approx2^{2-2n}\frac{\sqrt{4\pi n}\left(\frac{2n}{e}\right)^{2n}n}{2\pi n\left(\frac{n}{e}\right)^{2n}}=4\sqrt{\frac{n}{\pi}}=\Theta(\sqrt{\pi})$$
+
+\section*{Problem 4}
+\begin{enumerate}
+\item
+Let $Z=\dfrac{X-\mu_X}{\sigma_X}$\\
+$$\Pr(X-\mu_X\geq t\sigma_X)=\Pr(Z\geq t)=\Pr\left(Z+\dfrac{1}{t}\geq t+\dfrac{1}{t}\right)\leq\Pr\left(\left(Z+\dfrac{1}{t}\right)^2\geq \left(t+\dfrac{1}{t}\right)^2\right)$$\\
+By Markov's inequallity
+$$\Pr(X-\mu_X\geq t\sigma_X)\leq \dfrac{E\left[\left(Z+\dfrac{1}{t}\right)^2\right]}{\left(t+\dfrac{1}{t}\right)^2}$$
+$$E[Z^2]=\dfrac{E\left[(X-\mu_X)^2\right]}{E\left[Var[X]\right]}=1$$
+$$E[Z]=\dfrac{E[X-mu_X]}{E[Var[X]]}=0$$
+Thus
+$$\Pr(X-\mu_X\geq t\sigma_X)\leq \dfrac{1+\dfrac{1}{t^2}}{\left(t+\dfrac{1}{t}\right)^2}=\dfrac{1}{1+t^2}$$
+\item
+$$\Pr(|X-\mu_X|\geq t\sigma_X)=\Pr\left((X-\mu_X)^2\geq t^2Var[X]\right)=\Pr\left(\dfrac{(X-\mu_X)^2}{Var[X]}+1\geq t^2+1\right)$$
+By Markov's inequality
+$$\Pr(|X-\mu_X|\geq t\sigma_X)\leq \dfrac{E\left[\dfrac{\left(X-\mu_X\right)^2}{Var[X]}+1\right]}{t^2+1}=\dfrac{2}{t^2+1}$$
+\end{enumerate}
 \end{CJK*}
 \end{document}
