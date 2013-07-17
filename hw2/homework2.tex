@@ -85,7 +85,19 @@ $E[X_n]=\dfrac{1}{2n-1}\left(1+E[n-1]\right)+\dfrac{2n-2}{2n-1}E[n-1]=E[n-1]+\df
 $E[X_n]=\displaystyle\sum_{i=1}^{n} \dfrac{1}{2i-1}$
 
 \section*{Problem 2}
+Let $X_i$ be the number of balls in each bins in uniformly random case\\
+Let $Y_i$ be the number of balls in each bins in 2-choice paradigm case\\
+Obviously, in paradigm 1--3, the answer is $E[\max_i(X_i+Y_i)]$\\
+\newpage
+$$E[\max_i(X_i+Y_i)]\leq E[\max_iX_i]+E[\max_iY_i]$$
+Thus 
+$$E[\max_i(X_i+Y_i)]=O\left(\dfrac{\ln\frac{n}{2}}{\ln\ln\frac{n}{2}}+\ln\ln\frac{n}{2}\right)=O\left(\dfrac{\ln n}{\ln\ln n}\right)$$
 
+$$E[\max_i(X_i+Y_i)]\geq E[\max_iX_i]$$
+Thus
+$$E[\max_i(X_i+Y_i)]=\Omega\left(\dfrac{\ln\frac{n}{2}}{\ln\ln\frac{n}{2}}\right)=\Omega\left(\dfrac{\ln n}{\ln\ln n}\right)$$
+
+So the answer is $\Theta\left(\dfrac{\ln n}{\ln\ln n}\right)$
 \section*{Problem 3}
 Let $H_i$ be \texttt{Number of Heads} - \texttt{Number of Tails}\\
 $$E[|H_i|]=\sum_{x>0}x\Pr(H_i=x)-\sum_{x<0}x\Pr(H_i=x)=2\sum_{x>0}x\Pr(H_i=x)$$\\
@@ -98,7 +110,7 @@ $$S_2=\sum_{y=0}^{n} y\binom{2n}{y}=\sum_{y=0}^n 2n\binom{2n-1}{y-1}=2n\sum_{y=0
 $$S_1=(S_1+S_2)-S_2=\frac{n}{2}\binom{2n}{n}$$
 $$E[|H_i|]=2^{2-2n}S_1=2^{2-2n}\frac{(2n)!n}{n!n!}$$
 By Stirling's approximation
-$$E[|H_i|]\approx2^{2-2n}\frac{\sqrt{4\pi n}\left(\frac{2n}{e}\right)^{2n}n}{2\pi n\left(\frac{n}{e}\right)^{2n}}=4\sqrt{\frac{n}{\pi}}=\Theta(\sqrt{\pi})$$\\
+$$E[|H_i|]\approx2^{2-2n}\frac{\sqrt{4\pi n}\left(\frac{2n}{e}\right)^{2n}n}{2\pi n\left(\frac{n}{e}\right)^{2n}}=4\sqrt{\frac{n}{\pi}}=\Theta(\sqrt{i})$$\\
 \begin{align*}
 &\Pr(H\geq k)\\
 =&\Pr(H\geq k|H_n\geq k)\cdot\Pr(H_n\geq k)+\Pr(H\geq k|H_n<k)\cdot\Pr(H_n<k)\\
