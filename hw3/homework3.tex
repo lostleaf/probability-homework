@@ -1,0 +1,164 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
+\usepackage{amssymb,amsthm}
+\usepackage{amsmath,amssymb,CJK}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{listings}
+\usepackage{enumerate}
+
+\openup 7pt\pagestyle{plain} \topmargin -40pt \textwidth
+14.5cm\textheight 21.5cm
+\parskip .09 truein
+\baselineskip 4pt\lineskip 4pt \setcounter{page}{1}
+\def\a{\alpha}\def\b{\beta}\def\d{\delta}\def\D{\Delta}\def\fs{\footnotesize}
+\def\g{\gamma}
+\def\G{\Gamma}\def\l{\lambda}\def\L{\Lambda}\def\o{\omiga}\def\p{\psi}
+\def\se{\subseteq}\def\seq{\subseteq}\def\Si{\Sigma}\def\si{\sigma}\def\vp{\varphi}\def\es{\varepsilon}
+\def\sc{\scriptstyle}\def\ssc{\scriptscriptstyle}\def\dis{\displaystyle}
+\def\cl{\centerline}\def\ll{\leftline}\def\rl{\rightline}\def\nl{\newline}
+\def\ol{\overline}\def\ul{\underline}\def\wt{\widetilde}\def\wh{\widehat}
+\def\rar{\rightarrow}\def\Rar{\Rightarrow}\def\lar{\leftarrow}
+\def\Lar{\Leftarrow}\def\Rla{\rightleftarrow}\def\bs{\backslash}
+\def\ra{\rangle}\def\la{\langle}\def\hs{\hspace*}\def\rb{\raisebox}
+\def\ni{\noindent}\def\hi{\hangindent}\def\ha{\hangafter}
+\def\vs{\vspace*}
+\def\hom#1{\mbox{\rm Hom($#1,#1$)}}
+\def\thebeg{\vskip8pt\par\ni}
+\def\theend{\vskip5pt\par}
+\def\chabeg{\pagebreak\par}
+\def\chaend{\vskip20pt\par}
+\def\secbeg{\vskip15pt\par}
+\def\secend{\vskip10pt\par}
+\def\exebeg{\vskip10pt}
+\def\exeend{\vskip6pt}
+\def\undot#1{\mbox{$\mbox{#1}\hs{-1.5ex}_{_{\dis\centerdot}}\,\,$}}
+\def\qed{\hfill\mbox{$\Box$}}
+\def\C{\mathbb{C}}
+\def\Q{\mathbb{Q}}
+\def\ii{\mbox{\,{\bf i}\,}}
+\def\jj{\mbox{\,{\bf j}\,}}
+\def\AA{{\cal A}}
+\def\BB{{\cal B}}
+\def\DD{{\cal D}}
+\def\EE{{\mbox{\bf 1}}}
+\def\OO{{\mbox{\bf 0}}}
+\def\kk{{\mbox{\bf k}}}
+\def\R{\mathbb{R}}
+\def\F{\mathcal{F}{\ssc\,}}
+%\def\similar{\rb{-4pt}{\mbox{\,\~\,}}}
+\def\similar{\backsim}
+\def\Llra{\Longleftrightarrow}
+\def\Lra{\Longrightarrow}
+\def\Lla{\Longleftarrow}
+\def\mat#1#2{\mbox{$\left(\begin{array}{#1}#2\end{array}\right)$}}
+\def\det#1#2{\mbox{$\left|\begin{array}{#1}#2\end{array}\right|$}}
+\def\eset{\emptyset}
+\parindent=5ex
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newtheorem{Example}{\text{例}}
+\begin{CJK*}{UTF8}{gbsn}
+
+\date{}
+\title{Homework3}
+\author{Qinglin Li, 5110309074}
+\begin{document}
+\maketitle
+\section*{Problem 1}
+\begin{enumerate}
+\item
+Let $X$ be a subset of $V$. $\forall v\in V$, with probability $p$, $v \in X$\\
+$$E[|X|]=np$$
+Let $Y$ be the set of all vertices in $V-X$ that have no neighbours in $X$\\
+$$E[|Y|]=n(1-p)^{d+1}$$
+$X\cup Y$ is a dominating set\\
+\begin{align*}
+E[|X\cup Y|]&\leq E[|X|]+E[|Y|]=np+n(1-p)^{d+1}\\
+&= n\left[p+(1-p)^{d+1}\right] \leq n\left[p+e^{-p(d+1)}\right]
+\end{align*}
+let $p=\dfrac{\ln(d+1)}{d+1}$
+$$E[|X\cup Y|]\leq n\left[\dfrac{\ln(d+1)}{d+1}+\dfrac{1}{d+1	}\right]=\dfrac{n(1+\ln(d+1))}{d+1}$$
+\item
+Let $X$ be a subset of $V$. $\forall v\in V$, with probability $p$, $v \in X$\\
+Let  $A_i$ be the event that neither the i-th vertex nor its neighbors are in $X$\\
+By Lovasz local lemma, if $e(1-p)^{d+1}n\leq 1$, with nonzero probability none of these events happens .\\
+$\because e(1-p)^{d+1}n\leq e^{1-p(d+1)}n$\\
+$\therefore  e^{1-p(d+1)}n\leq 1 \Rightarrow e(1-p)^{d+1}n\leq 1$\\
+$\therefore p\geq \dfrac{\ln n+1}{d+1}$\\
+$\therefore$ the bound is $n\dfrac{\ln n+1}{d+1}$\\
+So the bound is worse.\\
+\end{enumerate}
+
+\section*{Problem 2}
+Suppose $G(V,E)$ dosen't contain $H$\\
+Covering $K_n$ with $k$ graphs isomorph of $G$ is corresponding to color $K_n$ with $k$ colors.\\
+If an edge is covered more than once, let it be of the first color.\\
+Since $H$ is not a subgraph of the $k$ graphs, if every edge is covered,  a k-coloring meeting the conditions exists.\\
+let 
+$
+X_i = \left\{
+	\begin{aligned}
+	&1~~\text{the i-th edge is not covered}\\
+	&0~~\text{otherwise}\\
+	\end{aligned}
+\right.
+$\\
+let $X=\sum X_i$
+$$E[X]=\sum E[X_i]=\binom{n}{2}\left(1-\dfrac{m}{\binom{n}{2}}\right)^k\leq \dfrac{n^2}{2}e^{\frac{-2mk}{n^2}}$$
+let $k=\dfrac{n^2\ln n}{m}, E[X]<1$\\
+ So there is an edge k-coloring for $K_n$ that $K_n$ contains no monochromatic $H$. 
+\section*{Problem 3}
+\textbf{Lemma:}\\
+Let $G(V,E)$ be a graph with degree at most $1$ for each vertex and have $2n$ vertices. \\
+Let $V=V_1\cup V_2 \cup \cdots \cup V_n$ be a partition s.t. $\forall V_i, |V_i|=2$\\
+Then there exists an independent set of $G$ containing precisely one vertex from each $V_i$\\
+
+The independent can be find in the following way:
+\begin{enumerate}
+	\item Arbitrarily choose a vertex $v_1$ for an arbitrary set $V_1$
+	\item For each $i$, suppose $v \in V_i$ is choosen.\\
+	 If $\exists w~s.t.~ (v,w)\in E\wedge \forall j\leq i, w\not\in V_j$, let the set containing $w$ be $V_{i+1}$. Else let any remaining set be $V_{i+1}$. \\
+	 Find $v_{i+1}\in V_{i+1}~s.t.~(v_i, v_{i+1})\not\in E$\\
+\end{enumerate}	 
+Let $G=(V, E)$ be a cycle of length $4n$. Reorder the vertices of $G$ such that $E=\{\left(i,(i+1)\mathrm{mod~n}\right)|i\leq 4n\}$\\
+Let $G'=(V,E')$ with $E'=\{(2i-1,2i)|i\leq 2n\}\subset E$. \\
+Each vertex in $G'$ has exact degree $1$\\
+Split $V_i$ of $G$ into $2$ sets $V_{i1}$ and $V_{i2}$\\
+So there must be an independent set $S$ of $G'$ contains exact $1$ vertex of each $V_{ij}~(j\in\{1,2\})$\\
+Then an independent set $S'$ of $V\setminus S$ with $V_i\setminus S$ can be found\\
+And $S'$ is obviously an independent set of $G$ containing precisely one vertex from each $V_i$
+
+\section*{Problem 4}
+Let $V\subseteq U$, each element in $U$ present in $V$ with probability $p$
+\begin{align*}
+&q\triangleq\Pr(V \text{is isolating set})\\
+=&\Pr(V\cup S=\emptyset)\left[1-\Pr(T_i\cap V=\emptyset\vee\cdots\vee T_m\cap V=\emptyset)\right]\\
+\geq & (1-p)^{|S|}\left[1-m(1-p)^{|S|}\right]
+\end{align*}
+Let $p=\dfrac{\ln 2m}{|S|}$, $\Pr(V \text{is isolating set})\geq\dfrac{1}{2m}\cdot \dfrac{1}{2}=\dfrac{1}{4m}$\\
+Let $N=|\F|$\\
+ $\forall$ safe set instance $I$,let 
+$
+X_I=\left\{
+	\begin{aligned}
+	1& ~~~\text{no isolating set in } \F\\
+	0& ~~~\text{at least one isolating set in } \F\\
+	\end{aligned}
+\right.
+$\\
+Let $X=\sum_I X_I$, \# of distinct $\displaystyle I = \binom{n}{\left|S\right|}\binom{n-|S|}{|S|}^m\leq 2^{n(m+1)}$ 
+$$E[X]=\sum_I E[X_i]\leq 2^{n(m+1)}(1-q)^N$$
+$$\Pr(X=0)=1-\Pr(X\geq 1)\geq 1-E[X]$$
+Let $N>4mn(m+1)$
+ $$\Pr(X=0)>2^{n(m+1)}\left(1-\dfrac{1}{4m}\right)^{4mn(m+1)}\approx\left(\dfrac{2}{e}\right)^{n(m+1)}>0$$
+
+\section*{Problem 5}
+Let $Y=\left|\dfrac{X}{\delta}\right|$ \\
+$$\dfrac{E\left[e^{t|X|}\right]}{e^{t\delta}}=\dfrac{E\left[e^{t\delta Z}\right]}{e^{t\delta}}=\dfrac{E\left[\sum_{i=0}^{\infty}\frac{(t\delta)^i}{i!}Y^i\right]}{e^{t\delta}}=\sum_{i=0}^{\infty}\frac{(t\delta)^i}{i!e^{t\delta}}E[Y^i]$$
+$\because\displaystyle \sum_{i=0}^{\infty}\frac{(t\delta)^i}{i!e^{t\delta}}=1$\\
+$\therefore $ let $k=\mathrm{argmin_i} E[Y^i], E[Y^k]=\dfrac{E\left[|X|^k\right]}{\delta^k}\leq \dfrac{E\left[e^{t|X|}\right]}{e^{t\delta}}$
+
+We prefer Chernoff bound because it's easy to use and calculate.\\
+\end{CJK*}
+\end{document}
