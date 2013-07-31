@@ -1,0 +1,184 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
+\usepackage{amssymb,amsthm}
+\usepackage{amsmath,amssymb,CJK}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{listings}
+\usepackage{enumerate}
+
+\openup 7pt\pagestyle{plain} \topmargin -40pt \textwidth
+14.5cm\textheight 21.5cm
+\parskip .09 truein
+\baselineskip 4pt\lineskip 4pt \setcounter{page}{1}
+\def\a{\alpha}\def\b{\beta}\def\d{\delta}\def\D{\Delta}\def\fs{\footnotesize}
+\def\g{\gamma}
+\def\G{\Gamma}\def\l{\lambda}\def\L{\Lambda}\def\o{\omiga}\def\p{\psi}
+\def\se{\subseteq}\def\seq{\subseteq}\def\Si{\Sigma}\def\si{\sigma}\def\vp{\varphi}\def\es{\varepsilon}
+\def\sc{\scriptstyle}\def\ssc{\scriptscriptstyle}\def\dis{\displaystyle}
+\def\cl{\centerline}\def\ll{\leftline}\def\rl{\rightline}\def\nl{\newline}
+\def\ol{\overline}\def\ul{\underline}\def\wt{\widetilde}\def\wh{\widehat}
+\def\rar{\rightarrow}\def\Rar{\Rightarrow}\def\lar{\leftarrow}
+\def\Lar{\Leftarrow}\def\Rla{\rightleftarrow}\def\bs{\backslash}
+\def\ra{\rangle}\def\la{\langle}\def\hs{\hspace*}\def\rb{\raisebox}
+\def\ni{\noindent}\def\hi{\hangindent}\def\ha{\hangafter}
+\def\ora{\overrightarrow}
+\def\vs{\vspace*}
+\def\hom#1{\mbox{\rm Hom($#1,#1$)}}
+\def\thebeg{\vskip8pt\par\ni}
+\def\theend{\vskip5pt\par}
+\def\chabeg{\pagebreak\par}
+\def\chaend{\vskip20pt\par}
+\def\secbeg{\vskip15pt\par}
+\def\secend{\vskip10pt\par}
+\def\exebeg{\vskip10pt}
+\def\exeend{\vskip6pt}
+\def\undot#1{\mbox{$\mbox{#1}\hs{-1.5ex}_{_{\dis\centerdot}}\,\,$}}
+\def\qed{\hfill\mbox{$\Box$}}
+\def\C{\mathbb{C}}
+\def\Q{\mathbb{Q}}
+\def\ii{\mbox{\,{\bf i}\,}}
+\def\jj{\mbox{\,{\bf j}\,}}
+\def\AA{{\cal A}}
+\def\BB{{\cal B}}
+\def\DD{{\cal D}}
+\def\EE{{\mbox{\bf 1}}}
+\def\OO{{\mbox{\bf 0}}}
+\def\kk{{\mbox{\bf k}}}
+\def\R{\mathbb{R}}
+\def\F{\mathbb{F}{\ssc\,}}
+%\def\similar{\rb{-4pt}{\mbox{\,\~\,}}}
+\def\similar{\backsim}
+\def\Llra{\Longleftrightarrow}
+\def\Lra{\Longrightarrow}
+\def\Lla{\Longleftarrow}
+\def\mat#1#2{\mbox{$\left(\begin{array}{#1}#2\end{array}\right)$}}
+\def\det#1#2{\mbox{$\left|\begin{array}{#1}#2\end{array}\right|$}}
+\def\eset{\emptyset}
+\parindent=5ex
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newtheorem{Example}{\text{例}}
+\begin{CJK*}{UTF8}{gbsn}
+
+\date{}
+\title{Homework4}
+\author{Qinglin Li, 5110309074}
+\begin{document}
+\maketitle
+\section*{Problem 1}
+$\forall \l>0$ 
+\begin{equation}\label{eq1}
+\Pr\left(X>(1+\d)(2n)\right)=\Pr\left(e^{\l X}>e^{\l (1+\d )(2n)}\right)\leq\dfrac{E\left[e^{\l X}\right]}{e^{\l (1+\d )(2n)}}=\dfrac{\prod_{i=1}^nE\left[e^{\l X_i}\right]}{e^{\l (1+\d )(2n)}}
+\end{equation}
+
+$\because E[e^{\l X_i}]=\sum_{k=1}^\infty e^{\l k}\Pr(X_i=k)=\sum_{k=1}^\infty e^{\l k}\left(\frac{1}{2}\right)^k=\sum_{k=1}^\infty \left(\frac{e^{\l}}{2}\right)^k=\dfrac{e^\l}{2-e^\l}$\\
+$\therefore \eqref{eq1}=\dfrac{\left(\frac{e^\l}{2-e^\l}\right)^n}{e^{\l (1+\d )(2n)}}=\left[\dfrac{1}{e^{\l(2\d+1)}\left(2-e^\l\right)}\right]^n$\\
+let $\l=\ln \dfrac{4\d+2}{2\d+2}, \eqref{eq1}\leq\left[\dfrac{(\d+1)^{2\d+2}}{(2\d+1)^{2\d+1}}\right]^n$ 
+
+\section*{Problem 2}
+\begin{enumerate}
+\item
+$\forall x\in\{0,1\}^k$, random choose $y\in\{0,1\}^n$, let $C(x)=y$\\
+number all messages as $0\cdots 2^{k}-1$\\
+for some constant $\l$
+randomly choose $y1,y2\in \{0,1\}^n$\\
+let $X=\sum_{i=1}^{n}|y1(i)-y2(i)|, ~~~E[X]=\dfrac{n}{2}$\\
+by chernoff bound\\
+$$\Pr\left(X\leq(1-\d)\frac{n}{2}\right)\leq e^{-\frac{n\d^2}{4}}$$
+let $\d=2\l\sqrt{r}~~(0<2\l\sqrt{r}<1)$\\
+$$\Pr\left(X\leq \frac{n}{2}-\l n\sqrt{r}\right)\leq e^{-\l^2nr}=e^{-\l^2k}$$
+let
+$X_{i,j}$ be the event $d(C(x_i),C(x_j))\leq\dfrac{n}{2}-\l n\sqrt{r}$\\
+the max degree of the dependency graph is $2\cdot 2^k$\\
+if $\forall k, 2^{k+1}e^{1-\l^2k}\leq 1$, $\Pr(\cap\overline{X_{i,j}})$, which means $d\geq \dfrac{n}{2}-\l n\sqrt{r}$\\
+let $k=1$, $\l=\sqrt{2\ln2+1}$, $2\l\sqrt{r}<1$ is satisfied.
+\item
+randomly assign $0$ and $1$ for elements in $A_{n\times k}$\\
+\begin{equation}\label{eq2}
+\begin{aligned}
+&\Pr(\exists x_1,x_2\in \{0,1\}^k, x_1\neq x_2 \wedge d(Ax_1, Ax_2)<t)\\
+=&\Pr(\exists x\in\{0,1\}^k\setminus\{\mathbf{0}\}, x_1\neq x_2 \wedge d(Ax,0 )<t)\\
+\leq&\sum_{x\in\{0,1\}^k\setminus\{\mathbf{0}\}}\Pr(d(Ax,0)<t)\\
+\leq&2^k\sum_{\mbox{\tiny$\begin{array}{c}
+y\in \{0,1\}^n\\
+d(y,0)<t\\
+\end{array}$}}\Pr(Ax=y)\\
+=&2^k\sum_{\mbox{\tiny$\begin{array}{c}
+y\in \{0,1\}^n\\
+d(y,0)<t\\
+\end{array}$}}2^{-n}
+\end{aligned}
+\end{equation}
+let $Vol(t,n)$ be the volumn of n-dim 2-ary Hamming ball with radius $t$\\
+$$\eqref{eq2}\leq 2^{k-n}Vol(t,n)$$
+let $t=(\frac{1}{2}-\sqrt{r})n$
+$$\eqref{eq2}\leq 2^{nr-n(1-H(\frac{1}{2}-\sqrt{r}))}$$
+$H(x)=-x\log_2x-(1-x)\log_2x$\\
+let $2^{nr-n(1-H(\frac{1}{2}-\sqrt{r}))}<1$\\
+verify with MATLAB, the proposition is true\\
+\end{enumerate}
+\section*{Problem 3}
+\begin{enumerate}
+\item
+let 
+$
+X_i=\left\{
+	\begin{aligned}
+	1~~~&\text{i-th machine fails}\\
+	0~~~&\text{otherwise}\\
+	\end{aligned}
+\right.
+$\\
+
+let $X=\sum_{i=1}^n X_i$\\
+$\because E[X]=\sum_{i=1}^nE[X_i]\leq0.05n$\\
+$\begin{aligned}
+\therefore&\Pr(X\geq 0.08n)=\Pr(X-0.05n\geq 0.03n)\leq\Pr(X-E[X]\geq 0.03n)\\
+\leq&\Pr(|X-E[X]|\geq 0.03n)<\exp(-\frac{9\times10^4n}{2})
+\end{aligned}
+$\\
+So the probability is exponentially small as the size of the system grows\\
+
+\item
+suppose the \# virtual machin is $m$, \# real mathine is $n$\\
+let 
+$
+X_i=\left\{
+	\begin{aligned}
+	1~~~&\text{i-th real machine fails}\\
+	0~~~&\text{otherwise}\\
+	\end{aligned}
+\right.
+$\\
+let $\mathbf{X}=(X_1,\cdots,X_n)$\\
+let $f(\mathbf{X})$ indicates the number of failed virtual machine when real mathine fails with $\mathbf{X}$\\
+$|f(x_1,\cdots,x_i,\cdots,x_n)-f(x_1,\cdots,x_i',\cdots,x_n)|\leq d$\\
+
+$\Pr\left(f(\mathbf{X})\geq\frac{m}{100000}\right)\leq\Pr(f(\mathbf{X})-E[f(\mathbf{X})]\geq 3.75\times10^{-6})$\\ 
+$\leq \exp\left(\dfrac{2\times10^{-11}m^2}{nd^2}\right)\leq\exp\left(\dfrac{2\times10^{-11}m}{d^2}\right)$\\
+So the probability that the system fails is exponentially small as n grows\\
+\end{enumerate}
+
+\section*{Problem 4}
+\begin{enumerate}
+\item
+let $Y_k=$ \# runs fo length $k$\\
+$
+Z_i=\left\{
+	\begin{aligned}
+	1~~~&S[i..(i+k-1)] is a run\\
+	0~~~&\text{otherwise}\\
+	\end{aligned}
+\right.
+$\\
+$E[Z_i]=\left(\frac{1}{2}\right)^k\cdot\frac{1}{2}$\\
+$E[Y_k]=\sum_{i=1}^{n-k+1}E[Z_i]=\left(\frac{1}{2}\right)^{k+1}+(n-k-1)\left(\frac{1}{2}\right)^{k+2}$\\
+$E[X_k]=\sum_{j=k}^nE[Y_j]=\sum_{j=k}^n(n-j-1)\left(\frac{1}{2}\right)^{j+2}+\left(\frac{1}{2}\right)^j=(n-k)2^{-k-1}+2^{-n}$
+\item
+$\because E[X_k]=\sum_{j=k}^nE[Y_j], Y_j \in \left[0,(n-k+1)\left(\frac{1}{2}\right)^{k+2}\right]$\\
+$\therefore \Pr\left(|X-E[X]|\geq t\right)\leq 2\exp\left(\dfrac{t^2}{2(n-k+1)^2\left(\frac{1}{2}\right)^{k+2}}\right)$
+
+\end{enumerate}
+\end{CJK*}
+\end{document}
